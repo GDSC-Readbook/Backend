@@ -38,4 +38,13 @@ public class BookService {
         }
     }
 
+    public Boolean save(Book book) {
+        try {
+            bookRepository.save(book);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

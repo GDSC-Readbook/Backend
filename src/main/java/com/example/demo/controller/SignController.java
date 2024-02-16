@@ -41,10 +41,11 @@ public class SignController {
         return new ResponseEntity<>(memberService.getMember(authentication.getName()), HttpStatus.OK);
     }
 
-    @Operation(operationId = "update", summary = "회원 정보 수정", description = "요청을 검토한뒤 회원 정보 수정", tags = "SignController")
-    @PostMapping("/updateNick")
-    public ResponseEntity<Boolean> updateNick(@RequestBody SignRequest request, Authentication authentication) throws Exception {
+    @Operation(operationId = "updatemyinfo", summary = "회원 정보 수정", description = "요청을 검토한뒤 회원 정보 수정", tags = "SignController")
+    @PostMapping("/updatemyinfo")
+    public ResponseEntity<Boolean> updatemyinfo(@RequestBody SignRequest request, Authentication authentication) throws Exception {
         System.out.println(authentication.getName());
+        System.out.println(request.toString());
         return new ResponseEntity<>(memberService.update(request, authentication.getName()), HttpStatus.OK);
     }
 

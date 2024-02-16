@@ -21,6 +21,7 @@ public class Book {
     private String bookName;
     private String bookTitle;
     private String bookAuthor;
+    private String bookImage;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String bookContent;
 
