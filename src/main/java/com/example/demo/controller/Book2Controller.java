@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.Book2Request;
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Book2;
+import com.example.demo.service.Book2Service;
 import com.example.demo.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -21,25 +24,32 @@ public class Book2Controller {
     @Value("${local.file.path}")
     String uploadFolder;
 
-    private final BookService bookService;
+    private final Book2Service bookService;
 
     @Operation(operationId = "/book2/findAll", summary = "모든 책 조회", description = "모든 책을 조회합니다.", tags = "BookController")
     @GetMapping("/book2/findAll")
-    public ResponseEntity<List<Book>> findAll() {
+    public ResponseEntity<List<Book2>> findAll() {
         return new ResponseEntity<>(bookService.findAll(), HttpStatus.OK);
     }
 
     @Operation(operationId = "/book2/findById", summary = "책 조회", description = "책을 조회합니다.", tags = "BookController")
     @GetMapping("/book2/findById")
-    public ResponseEntity<Book> findById(@RequestParam Long id) throws Exception {
+    public ResponseEntity<Book2> findById(@RequestParam Long id) throws Exception {
         return new ResponseEntity<>(bookService.findById(id).orElseThrow(() -> new Exception("책을 찾을 수 없습니다.")), HttpStatus.OK);
     }
 
     @Operation(operationId = "/book2/save", summary = "책 저장", description = "책을 저장합니다.", tags = "BookController")
     @PostMapping("/book2/save")
-    public ResponseEntity<Boolean> save(@RequestBody Book book) throws Exception {
-        book.setBookImage("example.png");
-        return new ResponseEntity<>(bookService.save(book), HttpStatus.OK);
+    public ResponseEntity<Boolean> save(@RequestBody Book2Request book) throws Exception {
+        Book2 book2 = new Book2();
+        book2.setBookImage("example.png");
+
+        book2.setBookName(book.getBookName());
+        book2.setBookTitle(book.getBookTitle());
+        book2.setBookAuthor(book.getBookAuthor());
+        book2.setBookContent(book.getBookContent());
+
+        return new ResponseEntity<>(bookService.save(book2), HttpStatus.OK);
     }
 
 

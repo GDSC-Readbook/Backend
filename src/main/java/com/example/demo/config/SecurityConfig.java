@@ -44,7 +44,8 @@ public class SecurityConfig {
                                         new AntPathRequestMatcher("/swagger-resources/**"),
                                         new AntPathRequestMatcher("/v2/api-docs"),
                                         new AntPathRequestMatcher("/v3/api-docs/**"),
-                                        new AntPathRequestMatcher("/book/**")
+                                        new AntPathRequestMatcher("/book/**"),
+                                        new AntPathRequestMatcher("/book2/**")
                                 )
                                 .permitAll()
                                 .anyRequest().authenticated()
