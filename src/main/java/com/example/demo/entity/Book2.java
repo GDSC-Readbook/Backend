@@ -3,16 +3,13 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class Book2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
