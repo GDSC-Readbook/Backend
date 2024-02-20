@@ -31,7 +31,7 @@ public class Book2Controller {
     public ResponseEntity<List<Book2>> findAll() {
         return new ResponseEntity<>(bookService.findAll(), HttpStatus.OK);
     }
-
+    
     @Operation(operationId = "/book2/findById", summary = "책 조회", description = "책을 조회합니다.", tags = "BookController")
     @GetMapping("/book2/findById")
     public ResponseEntity<Book2> findById(@RequestParam Long id) throws Exception {
